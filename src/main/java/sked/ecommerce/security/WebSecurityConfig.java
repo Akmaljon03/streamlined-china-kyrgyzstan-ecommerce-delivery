@@ -2,6 +2,7 @@ package sked.ecommerce.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -21,6 +22,7 @@ import sked.ecommerce.service.UserDetailsServiceImpl;
 
 @Configuration
 @EnableMethodSecurity
+@ComponentScan(basePackages = {"sked.ecommerce.security"})
 // (securedEnabled = true,
 // jsr250Enabled = true,
 // prePostEnabled = true) // by default
