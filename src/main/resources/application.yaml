@@ -13,3 +13,23 @@ spring:
     properties:
       hibernate:
         format_sql: true
+    
+jwt:
+  secret: secret
+  expiration: 86400000
+  header: Authorization
+  prefix: Bearer
+  login: /login
+  refresh: /refresh
+  register: /register
+  logout: /logout
+  user: /user
+  password: /password
+  email: /email
+  username: /username
+  role: /role
+  id: /id
+  all: /all
+  delete: /delete
+  update: /update
+  
