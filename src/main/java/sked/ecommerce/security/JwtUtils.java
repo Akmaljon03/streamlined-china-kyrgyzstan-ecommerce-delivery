@@ -13,6 +13,7 @@ import sked.ecommerce.service.UserDetailsImpl;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import jakarta.annotation.PostConstruct;
 
 @Component
 public class JwtUtils {
@@ -23,6 +24,12 @@ public class JwtUtils {
 
   @Value("${sked.ecommerce.jwt.expiration}")
   private int jwtExpirationMs;
+
+  @PostConstruct
+  public void postConstruct() {
+    logger.info("JWT Secret: {}", jwtSecret);
+    logger.info("JWT Expiration: {}", jwtExpirationMs);
+  }
 
   public String generateJwtToken(Authentication authentication) {
     UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
@@ -40,7 +47,7 @@ public class JwtUtils {
 
   public String getUserNameFromJwtToken(String token) {
     return Jwts.parserBuilder().setSigningKey(key()).build()
-               .parseClaimsJws(token).getBody().getSubject();
+        .parseClaimsJws(token).getBody().getSubject();
   }
 
   public boolean validateJwtToken(String authToken) {
