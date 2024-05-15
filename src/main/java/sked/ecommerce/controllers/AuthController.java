@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import sked.ecommerce.entity.user.*;
+import sked.ecommerce.entity.user.ERole;
+import sked.ecommerce.entity.user.Role;
+import sked.ecommerce.entity.user.User;
 import sked.ecommerce.payload.request.LoginRequest;
 import sked.ecommerce.payload.request.SignupRequest;
 import sked.ecommerce.payload.response.JwtResponse;
