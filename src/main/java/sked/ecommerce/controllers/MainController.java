@@ -13,31 +13,31 @@ public class MainController {
     // Display the home page
     @GetMapping
     public String home() {
-        return "redirect:/html/index.html";
+        return "redirect:index.html";
     }
 
     // Display the about page
     @GetMapping("/about")
     public String about() {
-        return "redirect:/html/about.html";
+        return "redirect:about.html";
     }
 
     // Display the contact page
-    @GetMapping("/contact")
+    @GetMapping("/change-password")
     public String contact() {
-        return "contact";
+        return "redirect:ChangePasswordProfile.html";
     }
 
     // Display the login page
-    @GetMapping("/login")
+    @GetMapping("/signin")
     public String login() {
-        return "login";
+        return "redirect:sign-in.html";
     }
 
     // Display the register page
     @GetMapping("/register")
     public String register() {
-        return "register";
+        return "redirect:registeration.html";
     }
 
     // Display the products page
@@ -73,7 +73,7 @@ public class MainController {
     // Display the profile page
     @GetMapping("/profile")
     public String profile() {
-        return "profile";
+        return "redirect:UserProfile.html";
     }
 
     // Display the order history page
@@ -101,9 +101,9 @@ public class MainController {
     }
 
     // Display the admin dashboard page
-    @GetMapping("/admin/dashboard")
+    @GetMapping("/admin")
     public String adminDashboard() {
-        return "adminDashboard";
+        return "redirect:admin.html";
     }
 
     // Display the admin orders page
