@@ -13,7 +13,7 @@ public class MainController {
     // Display the home page
     @GetMapping
     public String home() {
-        return "redirect:index.html";
+        return "forward:/html/index.html";
     }
 
     // Display the about page

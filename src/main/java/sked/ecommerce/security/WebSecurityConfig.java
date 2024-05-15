@@ -2,7 +2,6 @@ package sked.ecommerce.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -19,7 +18,6 @@ import sked.ecommerce.service.UserDetailsServiceImpl;
 
 @Configuration
 @EnableMethodSecurity
-@ComponentScan(basePackages = {"com.example.demo.security"})
 public class WebSecurityConfig {
 
     @Autowired
@@ -59,7 +57,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(auth -> 
                     auth.requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/test/**").permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll() // Allow all requests
                 );
         
         http.authenticationProvider(authenticationProvider());
