@@ -1,4 +1,5 @@
 package sked.ecommerce.security;
+
 import java.security.Key;
 import java.util.Date;
 
@@ -17,16 +18,14 @@ import io.jsonwebtoken.security.Keys;
 public class JwtUtils {
   private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
-  @Value("${bezkoder.app.jwtSecret}")
+  @Value("${sked.ecommerce.app.jwtSecret}")
   private String jwtSecret;
 
-  @Value("${bezkoder.app.jwtExpirationMs}")
+  @Value("${sked.ecommerce.app.jwtExpirationMs}")
   private int jwtExpirationMs;
 
   public String generateJwtToken(Authentication authentication) {
-
     UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
-
     return Jwts.builder()
         .setSubject((userPrincipal.getUsername()))
         .setIssuedAt(new Date())
@@ -34,7 +33,7 @@ public class JwtUtils {
         .signWith(key(), SignatureAlgorithm.HS256)
         .compact();
   }
-  
+
   private Key key() {
     return Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
   }
