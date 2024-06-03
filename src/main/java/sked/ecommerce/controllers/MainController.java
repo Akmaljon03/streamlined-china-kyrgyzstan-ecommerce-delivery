@@ -32,7 +32,7 @@ public class MainController {
 
     @GetMapping("/register")
     public String register() {
-        return "forward:/html/registeration.html";
+        return "forward:/html/registration.html";
     }
 
     // Follow this pattern for other mappings...

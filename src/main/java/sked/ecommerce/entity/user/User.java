@@ -1,12 +1,17 @@
 package sked.ecommerce.entity.user;
 
-import java.util.HashSet;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Set;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 
 @Entity
@@ -14,12 +19,14 @@ import jakarta.validation.constraints.Size;
         @UniqueConstraint(columnNames = "username"),
         @UniqueConstraint(columnNames = "email")
 })
-public class User {
+@Data
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String fullName;
     @NotBlank
     @Size(max = 20)
     private String username;
@@ -28,71 +35,43 @@ public class User {
     @Size(max = 50)
     @Email
     private String email;
+    private String number;
 
     @NotBlank
     @Size(max = 120)
     private String password;
+    private String gender;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles = new HashSet<>();
+    @Enumerated(EnumType.STRING)
+    private ERole role;
 
-    public User() {
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singletonList(new SimpleGrantedAuthority(role.name()));
     }
 
-    public User(String username, String email, String password) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-    }
-
-    public Long getId() {
-        return id;
-    }
-    
-    public void setId(Long id) {
-        this.id = id;
-    }
-
+    @Override
     public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public String getPassword() {
-        return password;
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-
-    public void addRole(Role role) {
-        this.roles.add(role);
-    }
-
-    public void removeRole(Role role) {
-        this.roles.remove(role);
-    }
-
-    
 }

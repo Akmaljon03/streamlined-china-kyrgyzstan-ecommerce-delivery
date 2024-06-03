@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/SKED
     username: postgres
-    password: 123456789
+    password: Azimbaev2004
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -15,7 +15,7 @@ spring:
         format_sql: true
     
 jwt:
-  secret: secret
+  secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
   expiration: 86400000
   header: Authorization
   prefix: Bearer
