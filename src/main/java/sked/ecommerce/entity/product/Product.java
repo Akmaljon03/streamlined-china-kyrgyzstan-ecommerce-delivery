@@ -1,12 +1,14 @@
 package sked.ecommerce.entity.product;
 
 
+import lombok.Data;
 import sked.ecommerce.entity.user.User;
 import jakarta.persistence.*;
 import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "product")
+@Data
 public class Product {
 
     @jakarta.persistence.Id
@@ -33,7 +35,4 @@ public class Product {
         this.weight = weight;
         this.seller = seller;
     }
-
-    public void setId(Long id) {this.id = id;}
-    public Long getId() {return id;}
 }

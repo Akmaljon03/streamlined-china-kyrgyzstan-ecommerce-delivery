@@ -2,7 +2,6 @@ package sked.ecommerce.entity.user;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Set;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -12,13 +11,11 @@ import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import sked.ecommerce.entity.adress.Address;
 
 
 @Entity
-@Table(name = "users", uniqueConstraints = {
-        @UniqueConstraint(columnNames = "username"),
-        @UniqueConstraint(columnNames = "email")
-})
+@Table(name = "users")
 @Data
 public class User implements UserDetails {
 
@@ -29,11 +26,13 @@ public class User implements UserDetails {
     private String fullName;
     @NotBlank
     @Size(max = 20)
-    private String username;
+    @Column(unique = true)
+    private String name;
 
     @NotBlank
     @Size(max = 50)
     @Email
+    @Column(unique = true)
     private String email;
     private String number;
 
@@ -44,6 +43,10 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private ERole role;
+
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id", name = "address_id")
+    private Address address;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

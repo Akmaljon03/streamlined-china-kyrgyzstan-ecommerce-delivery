@@ -47,14 +47,14 @@ public class JwtService {
                 .getBody();
     }
 
-    public String getUserNumberFromToken(String token) {
+    public String getUserEmailFromToken(String token) {
         return getAllClaimsFromToken(token).getSubject();
     }
 
     public boolean isTokenValid(String token, UserDetails userDetails) {
-        String userNumber = userDetails.getUsername();
+        String userEmail = userDetails.getUsername();
         Date expiration = getAllClaimsFromToken(token).getExpiration();
-        return (userNumber.equals(getUserNumberFromToken(token)) && expiration.after(new Date()));
+        return (userEmail.equals(getUserEmailFromToken(token)) && expiration.after(new Date()));
     }
 
     private Key signWith() {

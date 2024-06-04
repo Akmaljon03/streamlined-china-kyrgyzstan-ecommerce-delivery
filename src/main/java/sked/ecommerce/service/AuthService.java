@@ -7,7 +7,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import sked.ecommerce.entity.user.ERole;
-import sked.ecommerce.entity.user.Role;
 import sked.ecommerce.entity.user.User;
 import sked.ecommerce.exception.CustomException;
 import sked.ecommerce.payload.auth.AuthLoginRequest;
@@ -34,7 +33,7 @@ public class AuthService {
 
         User user = new User();
         user.setFullName(registerRequest.getFullName());
-        user.setUsername(registerRequest.getUsername());
+        user.setName(registerRequest.getUsername());
         user.setEmail(registerRequest.getEmail());
         user.setNumber(registerRequest.getNumber());
         user.setPassword(encoder.encode(registerRequest.getPassword()));
