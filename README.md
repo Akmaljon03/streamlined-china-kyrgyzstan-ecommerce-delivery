@@ -112,6 +112,6 @@ Contributions are welcome! Please follow these steps:
 
 ## Contact
 
-Your Name - [nurmakhamadovv@gmail.com](mailto:nurmakhamadovv@gmail.com)
+Akmalzhon Nurmakhamadov - [nurmakhamadovv@gmail.com](mailto:nurmakhamadovv@gmail.com)
 
 Project Link: [https://github.com/yourusername/repository-name](https://github.com/yourusername/repository-name)
