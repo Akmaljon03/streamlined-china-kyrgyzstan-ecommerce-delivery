@@ -56,8 +56,8 @@ This application is designed to enhance the delivery process for e-commerce tran
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/repository-name.git
-    cd repository-name/backend
+      git clone https://github.com/Akmaljon03/streamlined-china-kyrgyzstan-ecommerce-delivery.git
+    cd streamlined-china-kyrgyzstan-ecommerce-delivery
     ```
 
 2. Install dependencies and build the project:
@@ -114,4 +114,4 @@ Contributions are welcome! Please follow these steps:
 
 Akmalzhon Nurmakhamadov - [nurmakhamadovv@gmail.com](mailto:nurmakhamadovv@gmail.com)
 
-Project Link: [[[https://github.com/yourusername/repository-name](https://github.com/yourusername/repository-name](https://github.com/Akmaljon03/streamlined-china-kyrgyzstan-ecommerce-delivery/tree/master)](https://github.com/Akmaljon03/streamlined-china-kyrgyzstan-ecommerce-delivery/tree/master))
+Project Link: [https://github.com/Akmaljon03/streamlined-china-kyrgyzstan-ecommerce-delivery](https://github.com/Akmaljon03/streamlined-china-kyrgyzstan-ecommerce-delivery)
